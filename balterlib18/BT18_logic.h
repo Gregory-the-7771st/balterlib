@@ -13,7 +13,7 @@ typedef uint64_t BT18;
 #define BT18_1 0x555555557
 
 // used in SHIFT(...) and division
-int BT18_toInt(BT18 number) {
+int64_t BT18_toInt(BT18 number) {
     int result = 0;
     for (int i = 0; i < 18; i++) { // loop through each trit
         // int currentTrit = (word >> (i * 2)) & 0b11; // get the i'th trit (inlined version of extractTrit(...))
@@ -36,7 +36,7 @@ int BT18_toInt(BT18 number) {
 
 
 // used in division
-BT18 intToBT18(int a) {
+BT18 intToBT18(int64_t a) {
     // if it's a value bigger than what a 18 trit BT number can hold, emulate overflow
     if (a > powersOf3[17]) {
         a = a % powersOf3[17];
