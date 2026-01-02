@@ -13,7 +13,7 @@ typedef uint64_t BT27;
 #define BT27_1 0x15555555555557
 
 // used in SHIFT(...) and division
-int BT27_toInt(BT27 number) {
+int64_t BT27_toInt(BT27 number) {
     int result = 0;
     for (int i = 0; i < 27; i++) { // loop through each trit
         // int currentTrit = (word >> (i * 2)) & 0b11; // get the i'th trit (inlined version of extractTrit(...))
@@ -36,7 +36,7 @@ int BT27_toInt(BT27 number) {
 
 
 // used in division
-BT27 intToBT27(int a) {
+BT27 intToBT27(int64_t a) {
     // if it's a value bigger than what a 18 trit BT number can hold, emulate overflow
     if (a > powersOf3[26]) {
         a = a % powersOf3[26];
