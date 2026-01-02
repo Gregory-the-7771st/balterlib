@@ -30,19 +30,23 @@ Unless specified otherwise, every macro and function listed here does this and w
 - xor(BTx a, BTx b): Tritwise xor operation. In case you're thinking of a different extension of xor, this one defined as "(a | b) & BTx_neg(a & b)"
 - carry(BTx a, BTx b): The carries produced from balanced ternary addition. sets the resulting trit to 1 if both values are 1, T if both values are T, and 0 otherwise.
 - addNoCarry(BTx a, BTx b): The result from balanced ternary addition, but without accounting for carries.
-- shift(BTx a, BTx b): shifts a by b amount of trits. if b is negative then it shifts to the right, if it is positive then it shifts to the left. note that if you already know the amount you'll be shifting by, it'll be much faster to use one of mul3, mul9, div3 or do (a << b) | 0b0101... (there should be as many 0b01's as the amount you're shifting by) (if you're shifitng right you should put 0b01's starting from the left of the used bits, for example for BT9 do (a >> 1) | 0b010000000000000000). 
-- sign(BTx a): returns T (-1 in trit form) if the number is negative, 0 in trit form if the number is 0, and 1 in trit form if the number is positive
-- abs(BTx a): returns the absolute value of the number.
-- inc(BTx a): returns a + 1.
-- dec(BTx a): returns a - 1.
-- add(BTx a, BTx b): addition.
-- sub(BTx a, BTx b): subtraction.
-- mul2(BTx a): returns a * 2
-- mul3(BTx a): returns a * 3, this is also equal to shifting left by 1
-- mul9(BTx a): returns a * 2, this is also equal to shifting left by 2
+- shift(BTx a, BTx b): Shifts a by b amount of trits. if b is negative then it shifts to the right, if it is positive then it shifts to the left. note that if you already know the amount you'll be shifting by, it'll be much faster to use one of mul3, mul9, div3 or do (a << b) | 0b0101... (there should be as many 0b01's as the amount you're shifting by) (if you're shifitng right you should put 0b01's starting from the left of the used bits, for example for BT9 do (a >> 1) | 0b010000000000000000). 
+- sign(BTx a): Returns T (-1 in trit form) if the number is negative, 0 in trit form if the number is 0, and 1 in trit form if the number is positive
+- abs(BTx a): Returns the absolute value of the number.
+- inc(BTx a): Returns a + 1.
+- dec(BTx a): Returns a - 1.
+- add(BTx a, BTx b): Addition.
+- sub(BTx a, BTx b): Subtraction.
+- mul2(BTx a): Returns a * 2
+- mul3(BTx a): Returns a * 3, this is also equal to shifting left by 1
+- mul9(BTx a): Returns a * 2, this is also equal to shifting left by 2
 - mul(BTx a, BTx b): multiplication.
-- div2(BTx a): returns a / 2.
-- div3(BTx a): returns a / 3, this is also equal to shifting right by 1
-- div(BTx a, BTx b): integer division. Note that since converting to int before dividing and then converting back was faster, this is what the default implementation uses. If you want something that doesn't "cheat" like this, then use divPure.
+- div2(BTx a): Returns a / 2.
+- div3(BTx a): Returns a / 3, this is also equal to shifting right by 1
+- div(BTx a, BTx b): Integer division. Note that since converting to int before dividing and then converting back was faster, this is what the default implementation uses. If you want something that doesn't "cheat" like this, then use divPure.
 - divPure(BTx a, BTx b): divison, but it doesn't "cheat" (as explained above)
-- mod(BTx a, BTx b): symmetric modulo (what that means is that if a % b is bigger than half of b, then it returns a negative value (specifically b - (a asymmetric mod b))).
+- mod(BTx a, BTx b): Symmetric modulo (what that means is that if a % b is bigger than half of b, then it returns a negative value (specifically b - (a asymmetric mod b))).
+- toInt(BTx a): Converts balanced ternary number to normal integer type (32 bit if BT9, 64 bit otherwise)
+- intToBTx(intX_t a): converts normal integer to balanced ternary number. Does not start with the type prefix, instead replace BTx with your type. intX_t is int32_t if it's a 9 trit integer and int64_t otherwise.
+- toString(BTx a, char* pointerToString): does not return a value. Instead, it sets the pointer in the second argument to the resulting string. 'T' means -1, '0' means 0, '1' means 1. note that this includes the leading zeroes cuz i couldn't bother doing something about that
+- stringToBTx(char* string): converts string to BTx. Does not take the type prefix, instead replace BTx with your type as mentioned before. the only values it accepts are 'T' for -1, '0' for 0 and '1' for 1. Thankfully you don't have to include leading zeroes on this one
