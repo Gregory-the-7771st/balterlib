@@ -1,7 +1,7 @@
 # Balterlib
 Balanced ternary types for C, written primarily with speed in mind.
 
-This project was started with the plan of eventually making an emulator, but I'm currently quite burned out so I decided to very quickly convert it into a library, admittedly using some questionable coding practices along the way. I had to make a lot of changes for this to work and wasn't able to test it very much, so there may be some bugs or nonsensical comments. If you find something weird, or have any requests for wat i shoudl change or add, you should email me at hasan.05.7771@proton.me as I basically never check github.
+This project was started with the plan of eventually making an emulator, but I'm currently quite burned out so I decided to very quickly convert it into a library, admittedly using some questionable coding practices along the way. I had to make a lot of changes for this to work and wasn't able to test it very much, so there may be some bugs or nonsensical comments. If you find something weird, or have any requests for what i should change or add, you should email me at hasan.05.7771@proton.me as I basically never check github.
 
 I don't know how licenses work, but you're free to do whatever.
 
