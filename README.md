@@ -32,7 +32,7 @@ To include everything for all types, include balterlib.h. To include only a sing
 - xor(BTx a, BTx b): Tritwise xor operation. In case you're thinking of a different extension of xor, this one defined as "(a | b) & BTx_neg(a & b)"
 - carry(BTx a, BTx b): The carries produced from balanced ternary addition. sets the resulting trit to 1 if both values are 1, T if both values are T, and 0 otherwise.
 - addNoCarry(BTx a, BTx b): The result from balanced ternary addition, but without accounting for carries.
-- shift(BTx a, BTx b): Shifts a by b amount of trits. if b is negative then it shifts to the right, if it is positive then it shifts to the left. note that if you already know the amount you'll be shifting by, it'll be much faster to use one of mul3, mul9, div3 or do (a << b) | 0b0101... (there should be as many 0b01's as the amount you're shifting by) (if you're shifitng right you should put 0b01's starting from the left of the used bits, for example for BT9 do (a >> 1) | 0b010000000000000000). 
+- shift(BTx a, BTx b): Shifts a by b amount of trits. if b is negative then it shifts to the right, if it is positive then it shifts to the left. note that if you already know the amount you'll be shifting by, it'll be much faster to use one of mul3, mul9, div3 or do (a << b) | 0b0101... (there should be as many 0b01's as the amount you're shifting by) (if you're shifting right you should put 0b01's starting from the left of the used bits, for example for BT9 do (a >> 2) | 0b010000000000000000). 
 - sign(BTx a): Returns T (-1 in trit form) if the number is negative, 0 in trit form if the number is 0, and 1 in trit form if the number is positive
 - abs(BTx a): Returns the absolute value of the number.
 - inc(BTx a): Returns a + 1.
