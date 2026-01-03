@@ -15,6 +15,8 @@ There are 3 supported types:
 All macros and functions are prefixed by their type and an underscore. (i. e: BT9_add(...), BT27_USED_BITS, ...)
 Unless specified otherwise, every macro and function listed here does this and will be listed without the type prefix.
 
+To include everything for all types, include balterlib.h. To include only a single type, include balterlibX.h where X is 9, 18 or 27.
+
 ### Macros
 
 - USED_BITS: a mask that has every used bit set to 1. as an example, for a 9 trit integer, this mask will have the least significant 18 bits (1 trit is represented with 2 bits) set to 1, and everything else set to 0. This is largely an implementaion thing, but might be useful in some cases.
